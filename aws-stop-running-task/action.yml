@@ -1,0 +1,12 @@
+name: 'Amazon ECS "Stop running task" Action for GitHub Actions'
+description: 'Stopps all running tasks in a given ECS cluster'
+branding:
+  icon: 'cloud'
+  color: 'orange'
+inputs:
+  cluster:
+    description: 'The name of the cluster to stop tasks for'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
