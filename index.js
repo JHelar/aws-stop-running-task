@@ -18,7 +18,8 @@ const aws = require('aws-sdk')
                 for (const taskArn of tasks.taskArns) {
                     try {
                         const taskResult = await ecs.stopTask({
-                            task: taskArn
+                            task: taskArn,
+                            cluster
                         }).promise()
     
                         core.debug(`Stopped task ${taskResult.task} successfully.`)
