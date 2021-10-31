@@ -10,11 +10,11 @@ const run = async () => {
 
         try {
             const tasks = await ecs.listTasks({
-                cluster,
-                desiredStatus: 'RUNNING'
+                cluster
             }).promise()
-
+            
             if(tasks.taskArns) {
+                core.debug(`Found ${tasks.taskArns.length} tasks`)
                 for (const taskArn of tasks.taskArns) {
                     try {
                         const taskResult = await ecs.stopTask({
@@ -28,6 +28,8 @@ const run = async () => {
                         })
                     }
                 }
+            } else {
+                core.debug(`Found no tasks.`)
             }
         } catch (error) {
             core.setFailed("Failed to fetch tasks in ECS: " + error.message)
