@@ -1,7 +1,7 @@
 const core = require('@actions/core')
 const aws = require('aws-sdk')
 
-const run = async () => {
+;(async () => {
     try {
         const ecs = new aws.ECS({
             customUserAgent: 'aws-stop-running-task-for-github-actions'
@@ -39,8 +39,4 @@ const run = async () => {
         core.setFailed(error.message)
         core.debug(error.stack)
     }
-}
-
-if(require.main === 'main') {
-    run()
-}
+})()
