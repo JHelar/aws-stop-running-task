@@ -41,4 +41,6 @@ const run = async () => {
     }
 }
 
-module.exports = run
+if(require.main === 'main') {
+    run()
+}
