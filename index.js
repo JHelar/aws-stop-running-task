@@ -14,7 +14,7 @@ const aws = require('aws-sdk')
             }).promise()
             
             if(tasks.taskArns) {
-                core.debug(`Found ${tasks.taskArns.length} tasks`)
+                core.info(`Found ${tasks.taskArns.length} tasks`)
                 for (const taskArn of tasks.taskArns) {
                     try {
                         const taskResult = await ecs.stopTask({
@@ -22,7 +22,7 @@ const aws = require('aws-sdk')
                             cluster
                         }).promise()
     
-                        core.debug(`Stopped task ${taskResult.task} successfully.`)
+                        core.info(`Stopped task ${taskResult.task} successfully.`)
                     } catch (error) {
                         core.error(error, {
                             title: `Failed when stopping task ${taskArn}`
@@ -30,7 +30,7 @@ const aws = require('aws-sdk')
                     }
                 }
             } else {
-                core.debug(`Found no tasks.`)
+                core.info(`Found no tasks.`)
             }
         } catch (error) {
             core.setFailed("Failed to fetch tasks in ECS: " + error.message)
