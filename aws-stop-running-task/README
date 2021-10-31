@@ -1,0 +1,15 @@
+# AWS Stop Running Task
+
+This action will stop all runnning tasks in the given ECS cluster
+
+## Inputs
+
+## `cluster`
+
+**Required** The name of the ECS cluster.
+
+## Example usage
+
+uses: jhelar/custom-github-actions/aws-stop-running-task@v1
+with:
+    cluster: 'ECS CLUSTER NAME'
