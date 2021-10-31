@@ -1,3 +1,4 @@
+yarn package
 git tag -d v1
 git push --delete origin v1
 git tag -a -m "THE MESSAGE" v1
